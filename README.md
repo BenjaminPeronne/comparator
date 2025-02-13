@@ -94,8 +94,8 @@ Pour initialiser et déployer ce projet, suivez ces étapes :
     pip install -r requirements.txt
     ```
     
-3. **Configurer PostgreSQL** (fichier `.env` si applicable)
-4. **Exécuter les migrations** :
+
+3. **Exécuter les migrations** :
     
     ```bash
     python manage.py makemigrations
