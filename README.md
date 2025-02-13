@@ -1,10 +1,10 @@
-# Rapport de Synthèse
-
 # **Rapport de Synthèse : Implémentation d'une API CRUD pour la Gestion des Produits et Magasins**
 
 ## **1. Introduction**
 
 Ce document présente l'implémentation d'une API CRUD pour la gestion des produits, des magasins et des prix en utilisant Django et Django REST Framework. L'objectif est d'assurer un suivi efficace des produits disponibles dans différents magasins et de comparer les prix en fonction de divers critères.
+
+---
 
 ## **2. Structure de la Base de Données**
 
@@ -32,6 +32,8 @@ Afin de compléter le modèle relationnel, nous avons ajouté :
 - `rel_store_price` relie un `product` à un `store` en enregistrant son prix.
 - `rel_store_price` contient une référence à `taxe_rate` pour calculer le prix hors taxe.
 
+---
+
 ## **3. Implémentation des Modèles Django**
 
 Les modèles ont été définis en respectant les contraintes suivantes :
@@ -44,6 +46,8 @@ Les modèles ont été définis en respectant les contraintes suivantes :
     - `taxe_rate_id` référence `taxe_rate`.
     - `discounted_price` permet de stocker les prix promotionnels.
     - `proof` stocke l'URL d'une preuve de prix.
+
+---
 
 ## **4. API CRUD : Routes et Fonctionnalités**
 
@@ -71,7 +75,36 @@ L'API REST a été mise en place avec Django REST Framework et expose les routes
 
 L'utilisation de `ModelViewSet` simplifie l'implémentation CRUD et garantit un code propre et maintenable.
 
-## **5. Tests Unitaires avec pytest**
+---
+
+## **5. Processus d'Initialisation du Projet**
+
+Pour initialiser et déployer ce projet, suivez ces étapes :
+
+1. **Cloner le référentiel** :
+    
+    ```bash
+    git clone https://github.com/BenjaminPeronne/comparator
+    cd comparator
+    ```
+    
+2. **Installer les dépendances** :
+    
+    ```bash
+    pip install -r requirements.txt
+    ```
+    
+3. **Configurer PostgreSQL** (fichier `.env` si applicable)
+4. **Exécuter les migrations** :
+    
+    ```bash
+    python manage.py makemigrations
+    python manage.py migrate
+    ```
+
+---
+
+## **6. Tests Unitaires avec pytest**
 
 Nous avons mis en place des tests unitaires pour vérifier le bon fonctionnement des modèles et des routes API.
 
@@ -83,13 +116,13 @@ Nous avons mis en place des tests unitaires pour vérifier le bon fonctionnement
     - Création, lecture, modification et suppression de produits via l'API.
     - Tests de validation des données (champs obligatoires, format incorrect).
 
-### **5.1 Test de Création d'un Magasin**
+### **6.1 Test de Création d'un Magasin**
 
 ### **Requête cURL**
 
 ```bash
-curl -X POST <http://localhost:9000/api/stores/> \\
-     -H "Content-Type: application/json" \\
+curl -X POST <http://localhost:9000/api/stores/> \
+     -H "Content-Type: application/json" \
      -d '{
            "store_label": "SUPER U SAINTE ROSE",
            "address": "Adresse inconnue",
@@ -99,52 +132,15 @@ curl -X POST <http://localhost:9000/api/stores/> \\
            "longitude": null,
            "latitude": null
          }'
-
 ```
 
 Exécution des tests :
 
 ```bash
 pytest -v
-
 ```
 
-## **6. Processus d'Initialisation du Projet**
-
-Pour initialiser et déployer ce projet, suivez ces étapes :
-
-1. **Cloner le référentiel** :
-    
-    ```bash
-    git clone https://github.com/BenjaminPeronne/comparator
-    cd projet-comparators
-    
-    ```
-    
-2. **Installer les dépendances** :
-    
-    ```bash
-    pip install -r requirements.txt
-    
-    ```
-    
-3. **Configurer PostgreSQL** (fichier `.env` si applicable)
-4. **Exécuter les migrations** :
-    
-    ```bash
-    python manage.py makemigrations
-    python manage.py migrate
-    
-    ```
-    
-5. **Lancer le serveur Django** :
-    
-    ```bash
-    python manage.py runserver
-    
-    ```
-    
-6. **Tester les routes API** avec Postman ou cURL.
+---
 
 ## **7. Conclusion et Améliorations Possibles**
 
