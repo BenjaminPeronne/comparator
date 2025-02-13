@@ -134,25 +134,6 @@ curl -X POST <http://localhost:9000/api/stores/> \
          }'
 ```
 
-Exécution des tests :
-
-```bash
-pytest -v
-```
-
----
-
-## **7. Conclusion et Améliorations Possibles**
-
-L'implémentation de l'API CRUD a été réalisée en respectant les meilleures pratiques Django.
-
-### **Améliorations futures** :
-
-- Ajout d'un système d'authentification JWT.
-- Gestion avancée des promotions avec historique des prix.
-- Optimisation des requêtes avec `select_related` et `prefetch_related`.
-- Ajout d'un système de recherche et de filtrage avancé.
-
 ---
 
 **Auteur :** Equipe de développement - M2 MIAGE
