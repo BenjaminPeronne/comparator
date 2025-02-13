@@ -1,0 +1,33 @@
+#version: '3.8'
+
+services:
+  django_server:
+    build:
+      context: .
+    ports:
+      - "9000:9000"
+    volumes:
+      - type: bind
+        source: ./django_server
+        target: /app
+
+    depends_on:
+      - db_server
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db_server:5433/postgres
+    #tty: true
+
+  db_server:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+  django_server:
