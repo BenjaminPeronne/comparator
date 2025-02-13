@@ -116,7 +116,7 @@ Pour initialiser et déployer ce projet, suivez ces étapes :
 1. **Cloner le référentiel** :
     
     ```bash
-    git clone <https://github.com/utilisateur/projet-comparators.git>
+    git clone https://github.com/BenjaminPeronne/comparator
     cd projet-comparators
     
     ```
